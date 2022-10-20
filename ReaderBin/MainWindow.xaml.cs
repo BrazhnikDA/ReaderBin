@@ -14,9 +14,9 @@ namespace ReaderBin
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        // Путь то директории где запущена приложение
         string pathToCurrentDirectory = Environment.CurrentDirectory;
-
+        // Создание списков для хранения данных отображаемых в таблицых
         private BindingList<ListModel> dataD = new BindingList<ListModel>() { };
         private BindingList<ListModel> dataB = new BindingList<ListModel>() { };
 
@@ -25,6 +25,7 @@ namespace ReaderBin
             InitializeComponent();
         }
 
+        // Проверка на существование текстового файла с логами и фалйа конфигурации, если не созданы создать их
         private void checkerFavoriteFiles()
         {
             string pathToLogs = pathToCurrentDirectory + "\\log.txt";
@@ -55,6 +56,7 @@ namespace ReaderBin
             }
         }
 
+        // Проверка ввода символов в поисковик для первой таблицы
         private void TextBox_TextChangedB(object sender, TextChangedEventArgs e)
         {
             // Только цифры, 9 символов, увеличивать в ширину а не в высоту
@@ -75,6 +77,7 @@ namespace ReaderBin
             dgPassList.ItemsSource = tmp;
         }
 
+        // Проверка ввода символов в поисковик для второй таблицы
         private void TextBox_TextChangedD(object sender, TextChangedEventArgs e)
         {
             BindingList<ListModel> tmp = new BindingList<ListModel>();
@@ -95,12 +98,14 @@ namespace ReaderBin
             dgPassListTwo.ItemsSource = tmp;
         }
 
+        // Если окно загружено, вызов функций
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             checkerFavoriteFiles();
             mainWork();
         }
 
+        // Функция вызывающая бизнес логику по порядку
         private void mainWork()
         {
             string[] paths = readConfigFileAndReturnPathsToFiles();
@@ -127,6 +132,7 @@ namespace ReaderBin
             }
         }
 
+        // Заполнение первой таблицы
         private void fillListFirst(BindingList<ListModel> list)
         {
             dataB.Clear();
@@ -134,6 +140,7 @@ namespace ReaderBin
             dgPassList.ItemsSource = dataB;
         }
 
+        // Заполнение второй таблицы
         private void fillListSecond(BindingList<ListModel> list)
         {
             dataD.Clear();
@@ -141,6 +148,7 @@ namespace ReaderBin
             dgPassListTwo.ItemsSource = dataD;
         }
 
+        // Чтение конфигурационного файла и возвращаения пути указанного внутри файла
         private String[] readConfigFileAndReturnPathsToFiles()
         {
             try
@@ -201,7 +209,7 @@ namespace ReaderBin
             }
         }
 
-
+        // Чтение файлов из папки типа SCNB/SCND - файл каждого типа всегда 1!
         private BindingList<ListModel> readFile(string pathToFile)
         {
             if(pathToFile == null || pathToFile == "")
@@ -244,6 +252,7 @@ namespace ReaderBin
             }
         }
 
+        // Добавление нулей в начало номера карты до 10 символов
         private string addNullToStartCardNumber(string card)
         {
             while(card.Length < 10)
@@ -253,6 +262,9 @@ namespace ReaderBin
             return card;
         }
 
+        // Функция для записи логов
+        // log - текст лога
+        // isTime - Записать время лога? true = да/false = нет; По умолчанию время записывается при передаче одного параметра в функцию
         private void logsWriter(string log, bool isTime = true)
         {
             try
@@ -272,12 +284,14 @@ namespace ReaderBin
             }
         }
 
+        // Записать в лог сообщение о закрытии программы
         private void Window_Closed(object sender, EventArgs e)
         {
             logsWriter("EXIT PROGRAM!");
             logsWriter("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", false);
         }
-
+        
+        // Проверка на то что в поиск (для первой таблицы) вводится ТОЛЬКО ЦИФРЫ
         private void inputFindB_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             if (!char.IsDigit(e.Text, 0))
@@ -286,6 +300,7 @@ namespace ReaderBin
             }
         }
 
+        // Проверка на то что в поиск (для второй таблицы) вводится ТОЛЬКО ЦИФРЫ
         private void inputFindD_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             if (!char.IsDigit(e.Text, 0))
@@ -294,6 +309,8 @@ namespace ReaderBin
             }
         }
 
+        // Обработка нажатия на кнопку обновить
+        // Выполняет заново весь функционал
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             checkerFavoriteFiles();
