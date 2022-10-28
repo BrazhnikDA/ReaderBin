@@ -340,7 +340,6 @@ namespace ReaderBin
                         int a1 = Decimal.ToByte(d[0]);
                         int a2 = Decimal.ToByte(d[1]);
                         int a3 = Decimal.ToByte(d[2]);
-                        //sum = ((256 * 256 * a1) + 256 * a2 + a3);
                         list.Add(new ListModel()
                         {
                             Id = counter.ToString(),
