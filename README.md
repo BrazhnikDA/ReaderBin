@@ -12,7 +12,8 @@
 
 Кусочек кода читающий второй тип файла
 '''
-	BindingList<ListModel> list = new BindingList<ListModel>();
+		
+				BindingList<ListModel> list = new BindingList<ListModel>();
 
                 FileStream myStream = new FileStream(pathToFile, FileMode.Open, FileAccess.Read);
                 BinaryReader myReader = new BinaryReader(myStream);
