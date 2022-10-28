@@ -9,10 +9,9 @@
         MinHeight="500"
         MinWidth="500"
         Background="White"
-        Title="ReaderBin" Height="735" Width="750" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="ReaderBin" Height="735" Width="935" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="18*"/>
@@ -25,7 +24,7 @@
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid Grid.Row="3" Grid.Column="0" x:Name="dgPassList" HorizontalAlignment="Center" SelectionUnit="Cell" CanUserAddRows="False" FontSize="20px" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FF0B0B0B" VerticalGridLinesBrush="#FF0B0B0B" VerticalAlignment="Top">
+        <DataGrid Grid.Row="2" Grid.Column="0" x:Name="dgPassList" HorizontalAlignment="Center" SelectionUnit="Cell" CanUserAddRows="False" FontSize="20px" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FF0B0B0B" VerticalGridLinesBrush="#FF0B0B0B" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="70" Binding="{Binding Id}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Карта" Width="*" Binding="{Binding Card}" IsReadOnly="True" />
@@ -37,7 +36,7 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-        <DataGrid Grid.Row="3" Grid.Column="2" x:Name="dgPassListTwo" Background="White" HorizontalAlignment="Center" SelectionUnit="Cell" CanUserAddRows="False" FontSize="20px" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FF0B0B0B" VerticalGridLinesBrush="#FF0B0B0B">
+        <DataGrid Grid.Row="2" Grid.Column="2" x:Name="dgPassListTwo" Background="White" HorizontalAlignment="Center" SelectionUnit="Cell" CanUserAddRows="False" FontSize="20px" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FF0B0B0B" VerticalGridLinesBrush="#FF0B0B0B">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="70" Binding="{Binding Id}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Карта" Width="*" Binding="{Binding Card}" IsReadOnly="True" />
@@ -50,7 +49,7 @@
             </DataGrid.ContextMenu>
         </DataGrid>
 
-        <DataGrid Grid.Row="3" Grid.Column="4" x:Name="dgPassListThree" Background="White" HorizontalAlignment="Center" SelectionUnit="Cell" CanUserAddRows="False" FontSize="20px" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FF0B0B0B" VerticalGridLinesBrush="#FF0B0B0B">
+        <DataGrid Grid.Row="2" Grid.Column="4" x:Name="dgPassListThird" Background="White" HorizontalAlignment="Center" SelectionUnit="Cell" CanUserAddRows="False" FontSize="20px" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FF0B0B0B" VerticalGridLinesBrush="#FF0B0B0B">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="70" Binding="{Binding Id}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Карта" Width="*" Binding="{Binding Card}" IsReadOnly="True" />
@@ -73,9 +72,9 @@
         <Border Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="5" Width="2" Height="50"/>
         <Border Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="5" Width="2" Height="620"/>
 
-        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click">
-            <StackPanel Orientation="Vertical" Background="GhostWhite" Width="229">
-                <Image Source="reload.png" Height="32" Width="38"/>
+        <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click">
+            <StackPanel Orientation="Vertical" Background="LightGreen" Width="30">
+                <Image Source="reload.png" Height="30" Width="28" RenderTransformOrigin="2.9,0.66"/>
             </StackPanel>
         </Button>
 
@@ -84,8 +83,6 @@
         <TextBlock Grid.Row="0" Grid.Column="2" x:Name="pathToFileD" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Text="TextBox" Height="28" Width="auto" FontSize="16"/>
         <TextBlock Grid.Row="0" Grid.Column="4" x:Name="pathToFilePCLB" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Text="TextBox" Height="28" Width="auto" FontSize="16"/>
 
-        <TextBox Grid.Row="1" Grid.Column="0" x:Name="inputFindB" MaxLength="10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="110" FontWeight="Bold" TextChanged="TextBox_TextChangedB" FontSize="20" PreviewTextInput="inputFindB_PreviewTextInput"/>
-        <TextBox Grid.Row="1" Grid.Column="2" x:Name="inputFindD" MaxLength="10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="110" FontWeight="Bold" TextChanged="TextBox_TextChangedD" FontSize="20" PreviewTextInput="inputFindD_PreviewTextInput"/>
-        <TextBox Grid.Row="1" Grid.Column="4" x:Name="inputFindPCLB" MaxLength="10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="110" FontWeight="Bold" TextChanged="TextBox_TextChangedD" FontSize="20" PreviewTextInput="inputFindPCLB_PreviewTextInput"/>
+        <TextBox Grid.Row="1" Grid.Column="2" x:Name="inputFind" MaxLength="10" HorizontalAlignment="Center" Width="160" FontWeight="Bold" TextChanged="TextBox_TextChanged" FontSize="26" PreviewTextInput="inputFindD_PreviewTextInput" Margin="0,1,0,1" Height="32"/>
     </Grid>
 </Window>
