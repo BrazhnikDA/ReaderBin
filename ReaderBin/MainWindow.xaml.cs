@@ -161,28 +161,37 @@ namespace ReaderBin
         // Заполнение первой таблицы
         private void fillListFirst(BindingList<ListModel> list)
         {
-            dataB.Clear();
-            dgPassList.ClearDetailsVisibilityForItem(list);
-            dataB = list;
-            dgPassList.ItemsSource = dataB;
+            if (list != null)
+            {
+                dataB.Clear();
+                dgPassList.ClearDetailsVisibilityForItem(list);
+                dataB = list;
+                dgPassList.ItemsSource = dataB;
+            }
         }
 
         // Заполнение второй таблицы
         private void fillListSecond(BindingList<ListModel> list)
         {
-            dataD.Clear();
-            dgPassListTwo.ClearDetailsVisibilityForItem(list);
-            dataD = list;
-            dgPassListTwo.ItemsSource = dataD;
+            if (list != null)
+            {
+                dataD.Clear();
+                dgPassListTwo.ClearDetailsVisibilityForItem(list);
+                dataD = list;
+                dgPassListTwo.ItemsSource = dataD;
+            }
         }
 
         // Заполнение третьей таблицы
         private void fillListThird(BindingList<ListModel> list)
         {
-            dataPCLB.Clear();
-            dgPassListThird.ClearDetailsVisibilityForItem(list);
-            dataPCLB = list;
-            dgPassListThird.ItemsSource = dataPCLB;
+            if (list != null)
+            {
+                dataPCLB.Clear();
+                dgPassListThird.ClearDetailsVisibilityForItem(list);
+                dataPCLB = list;
+                dgPassListThird.ItemsSource = dataPCLB;
+            }
         }
 
         // Чтение конфигурационного файла и возвращаения пути указанного внутри файла
@@ -433,6 +442,10 @@ namespace ReaderBin
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             mainWork();
+            if(inputFind.Text.Length > 0)
+            {
+                findCard(inputFind.Text);
+            }
             Title = "ReaderBin. Last update: " + DateTime.Now.ToString("HH:mm:ss tt");
         }
     }
